@@ -73,3 +73,10 @@ config LGE_MIPI_DSI_LGD_LVDS_WXGA
 config LGE_MIPI_DSI_LGD_NT35521_WXGA 
 	bool "MIPI LGD NT35521 WXGA PANEL"
     default n
+
+config FB_MSM_MDSS_KCAL_CTRL
+	depends on FB_MSM_MDSS
+	bool "MDSS color control"
+	---help---
+	  Enable sysfs for rgb/lut control for mdss-mdp display controllers
+	  in the MDSS sub-system.
