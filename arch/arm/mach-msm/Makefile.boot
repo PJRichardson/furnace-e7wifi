@@ -99,8 +99,7 @@ endif
 
 # MSM8226
    zreladdr-$(CONFIG_ARCH_MSM8226)	:= 0x00008000
-ifeq ($(CONFIG_MACH_LGE),y)
-else # not CONFIG_MACH_LGE
+ifeq ($(CONFIG_MACH_LGE),n)
 	dtb-$(CONFIG_ARCH_MSM8226)	+= msm8226-sim.dtb
 	dtb-$(CONFIG_ARCH_MSM8226)	+= msm8226-fluid.dtb
 	dtb-$(CONFIG_ARCH_MSM8226)	+= msm8226-v1-cdp.dtb
@@ -130,7 +129,12 @@ else # not CONFIG_MACH_LGE
 	dtb-$(CONFIG_ARCH_MSM8226)	+= apq8026-v2-1080p-cdp.dtb
 	dtb-$(CONFIG_ARCH_MSM8226)	+= apq8026-v2-720p-mtp.dtb
 	dtb-$(CONFIG_ARCH_MSM8226)	+= apq8026-v2-1080p-mtp.dtb
-endif # not CONFIG_MACH_LGE
+else ifneq ($(CONFIG_DTS_TARGET),"")
+	dtb-$(CONFIG_MACH_MSM8226_E7WIFI) += msm8226-v1-e7wifi.dtb
+	dtb-$(CONFIG_MACH_MSM8226_E7WIFI) += msm8226-v2-e7wifi.dtb
+	dtb-$(CONFIG_MACH_MSM8226_E7LTE_ATT_US) += msm8226-e7lte.dtb
+	dtb-$(CONFIG_MACH_MSM8226_E7LTE_VZW_US) += msm8226-e7lte.dtb
+endif
 
 # FSM9XXX
    zreladdr-$(CONFIG_ARCH_FSM9XXX)	:= 0x10008000
