@@ -114,7 +114,6 @@ endif
 endif
 endif
 
-obj-$(CONFIG_MACH_LGE) += lge_kcal_ctrl.o
 obj-$(CONFIG_LGE_QSDL_SUPPORT) += lge_qsdl.o
 
 #[WiFi]_S[sangheon.shim@lge.com] BRCM WLAN

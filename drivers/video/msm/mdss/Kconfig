@@ -40,10 +40,6 @@ config LGE_LCD_DCDC
         tristate "Display Mode - DCDC Mode Enable "
         default n
 
-config LCD_KCAL
-        bool "Enable sysfs for LCD KCAL"
-        default n
-
 config LGE_MIPI_TOVIS_VIDEO_540P_PANEL
         bool "MIPI TOVIS VIDEO 540P PANEL && MIPI TOVIS VIDEO 540 PANEL WITH DSV"
         default n

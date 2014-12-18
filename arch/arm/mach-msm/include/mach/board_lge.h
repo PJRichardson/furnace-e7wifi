@@ -126,20 +126,6 @@ enum lge_boot_cable_type {
 	LGE_BOOT_NO_INIT_CABLE,
 };
 
-#if defined(CONFIG_LCD_KCAL)
-struct kcal_data {
-	int red;
-	int green;
-	int blue;
-};
-
-struct kcal_platform_data {
-	int (*set_values) (int r, int g, int b);
-	int (*get_values) (int *r, int *g, int *b);
-	int (*refresh_display) (void);
-};
-#endif
-
 enum lge_laf_mode_type {
     LGE_LAF_MODE_NORMAL = 0,
     LGE_LAF_MODE_LAF,
@@ -185,10 +171,6 @@ void __init lge_add_persistent_device(void);
 
 #if defined(CONFIG_ANDROID_PERSISTENT_RAM)
 void __init lge_add_persist_ram_devices(void);
-#endif
-
-#if defined(CONFIG_LCD_KCAL)
-void __init lge_add_lcd_kcal_devices(void);
 #endif
 
 #ifdef CONFIG_USB_G_LGE_ANDROID
