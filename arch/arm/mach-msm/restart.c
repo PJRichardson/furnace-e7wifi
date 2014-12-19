@@ -293,6 +293,10 @@ static void msm_restart_prepare(const char *cmd)
 			__raw_writel(0x6C616664, restart_reason);
 		} else if (!strncmp(cmd, "recovery", 8)) {
 			__raw_writel(0x77665502, restart_reason);
+#ifdef CONFIG_FURNACE_BOOTMODE
+		} else if (!strncmp(cmd, "furnace", 7)) {
+			__raw_writel(0x6f656d52, restart_reason);
+#endif
 #ifdef CONFIG_LGE_BNR_RECOVERY_REBOOT
 			/* PC Sync B&R : Add restart reason */
 		} else if (!strncmp(cmd, "--bnr_recovery", 14)) {

@@ -3070,4 +3070,10 @@ config KRAIT_REGULATOR
 	 regulators running in ganged mode inside the PMIC. Enable
 	 this option to support such configurations.
 
+config FURNACE_BOOTMODE
+	bool "Support Furnace device config via reboot"
+	help
+	  Allow rebooting the device in order to load a custom configuration
+	  by setting a unique reboot code in LK bootloader.
+
 endif

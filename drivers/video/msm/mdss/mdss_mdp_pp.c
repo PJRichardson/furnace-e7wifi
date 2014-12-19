@@ -1955,6 +1955,17 @@ int mdss_mdp_pp_get_kcal(int data)
 	return (ret == NUM_QLUT) ? MAX_KCAL : ret;
 }
 
+#ifdef CONFIG_FURNACE_BOOTMODE
+static bool custom_kcal;
+static int __init config_custom_kcal(char *str)
+{
+	custom_kcal = !strcmp(str, "1") ? true : false;
+
+	return 1;
+}
+__setup("androidboot.dlcomplete=", config_custom_kcal);
+#endif
+
 int mdss_mdp_pp_init(struct device *dev)
 {
 	int i, ret = 0;
@@ -2005,7 +2016,14 @@ int mdss_mdp_pp_init(struct device *dev)
 
 	if (!ret) {
 		mdss_mdp_pp_argc();
+#ifdef CONFIG_FURNACE_BOOTMODE
+		if (custom_kcal)
+			update_preset_lcdc_lut(MAX_KCAL-20, MAX_KCAL-30, MAX_KCAL);
+		else
+			update_preset_lcdc_lut(MAX_KCAL, MAX_KCAL, MAX_KCAL);
+#else
 		update_preset_lcdc_lut(MAX_KCAL, MAX_KCAL, MAX_KCAL);
+#endif
 	}
 
 	mutex_unlock(&mdss_pp_mutex);
